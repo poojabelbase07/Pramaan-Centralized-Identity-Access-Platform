@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import { testBackend, getStates } from './services/testService';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [message, setMessage] = useState('');
+  const [states, setStates] = useState<any[]>([]);
+
+  useEffect(() => {
+    // Test backend connection
+    testBackend()
+      .then(data => setMessage(data))
+      .catch(err => console.error(err));
+
+    // Fetch states
+    getStates()
+      .then(data => setStates(data))
+      .catch(err => console.error(err));
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-3xl font-bold text-blue-600 mb-4">
+          Membership Card System
+        </h1>
+        
+        <div className="mb-6">
+          <h2 className="text-xl font-semibold mb-2">Backend Status:</h2>
+          <p className="text-green-600 font-bold">{message}</p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold mb-2">Available States:</h2>
+          <ul className="list-disc pl-6">
+            {states.map(state => (
+              <li key={state.id}>
+                {state.stateName} ({state.stateCode})
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
