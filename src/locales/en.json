@@ -1,0 +1,34 @@
+{
+  "landing": {
+    "orgName": "Pravasi Nepali Sangh Bharat",
+    "systemName": "PRAMAAN SYSTEM",
+    "tagline": "Digital Identity for Global Nepali Community",
+    "description": "Pravasi Nepali Sangh Bharat is dedicated to serving the Nepali diaspora across India. Our Pramaan System provides secure, verified digital membership cards to connect and empower our community.",
+    "mission": "Preserving heritage, building bridges, empowering lives.",
+    "getStarted": "Get Started",
+    "signIn": "Sign In",
+    "alreadyMember": "Already a member?"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to access your account",
+      "email": "Email Address",
+      "password": "Password",
+      "submit": "Sign In",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create Account"
+    },
+    "register": {
+      "title": "Join Our Community",
+      "subtitle": "Create your Pramaan account",
+      "email": "Email Address",
+      "password": "Password",
+      "phone": "Phone Number",
+      "state": "Select Your State",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign In"
+    }
+  }
+}
